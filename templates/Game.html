@@ -1,128 +1,144 @@
- {% load static %}
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Кнопки</title>
-<style>
-    /* Стили кнопки */
-    .button {
-        margin: 5px; /* Небольшие отступы между кнопками */
-        padding: 0; /* Убираем внутренний отступ */
-        background-color: rgba(0, 0, 0, 0.5); /* Чуть темнее фон */
-        border: none; /* Убираем рамку */
-        cursor: pointer;
-        position: relative; /* Позиционируем для текста */
-        overflow: hidden; /* Перекрываемый контент не должен выходить за границы кнопки */
-        /* Текст в центре */
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 100px; /* Увеличиваем ширину кнопки */
-        height: 140px; /* Увеличиваем высоту кнопки */
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кнопки</title>
+    <style>
+        /* Стили кнопки */
+        .button {
+            margin: 5px; /* Небольшие отступы между кнопками */
+            padding: 0; /* Убираем внутренний отступ */
+            background-color: rgba(0, 0, 0, 0.5); /* Чуть темнее фон */
+            border: none; /* Убираем рамку */
+            cursor: pointer;
+            position: relative; /* Позиционируем для текста */
+            overflow: hidden; /* Перекрываемый контент не должен выходить за границы кнопки */
+            /* Текст в центре */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100px; /* Увеличиваем ширину кнопки */
+            height: 140px; /* Увеличиваем высоту кнопки */
+        }
 
-    .button img {
-        width: 100%; /* Ширина изображения равна ширине кнопки */
-        height: 100%; /* Высота изображения равна высоте кнопки */
-        object-fit: cover; /* Изображение вписывается в размеры кнопки без искажений */
-    }
+        .button img {
+            width: 100%; /* Ширина изображения равна ширине кнопки */
+            height: 100%; /* Высота изображения равна высоте кнопки */
+            object-fit: cover; /* Изображение вписывается в размеры кнопки без искажений */
+        }
 
-    .button span {
-        color: black; /* Черный цвет текста */
-        font-size: 12px; /* Размер шрифта */
-        font-weight: bold; /* Жирный текст */
-        position: relative; /* Позиционируем текст */
-        z-index: 1; /* Текст поверх изображения */
-        text-shadow: -1px -1px 0 #fff,
-                      1px -1px 0 #fff,
-                     -1px  1px 0 #fff,
-                      1px  1px 0 #fff; /* Белая окантовка */
-    }
+        .button span {
+            color: black; /* Черный цвет текста */
+            font-size: 12px; /* Размер шрифта */
+            font-weight: bold; /* Жирный текст */
+            position: relative; /* Позиционируем текст */
+            z-index: 1; /* Текст поверх изображения */
+            text-shadow: -1px -1px 0 #fff,
+            1px -1px 0 #fff,
+            -1px 1px 0 #fff,
+            1px 1px 0 #fff; /* Белая окантовка */
+        }
 
-    .buttons-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center; /* Выравнивание кнопок по центру */
-        align-items: flex-end; /* Расположение кнопок внизу */
-        margin-top: auto; /* Отступ сверху для выравнивания */
-    }
+        .buttons-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Выравнивание кнопок по центру */
+            align-items: flex-end; /* Расположение кнопок внизу */
+            margin-top: auto; /* Отступ сверху для выравнивания */
+        }
 
-    /* Стили длинной кнопки */
-    .long-button {
-        width: 200px; /* Ширина кнопки */
-        height: 40px; /* Высота кнопки */
-        background-color: #333; /* Цвет фона темно-серый */
-        color: white; /* Цвет текста */
-        border: none; /* Убираем рамку */
-        border-radius: 5px; /* Скругленные углы */
-        cursor: pointer; /* Изменяем курсор при наведении */
-        margin-top: auto; /* Отступ сверху */
-        margin-bottom: 10px; /* Отступ снизу */
-        position: fixed; /* Фиксированное положение */
-        bottom: 10px; /* Положение снизу */
-        left: 50%; /* Положение по горизонтали по центру */
-        transform: translateX(-50%); /* Центрирование */
-        display: flex; /* Добавляем блочный контейнер для вложенного <a> */
-        align-items: center; /* Выравниваем элементы по центру */
-        justify-content: center; /* Выравниваем элементы по центру */
-        text-decoration: none; /* Убираем стандартное подчеркивание */
-    }
+        /* Стили длинной кнопки */
+        .long-button {
+            width: 200px; /* Ширина кнопки */
+            height: 40px; /* Высота кнопки */
+            background-color: #333; /* Цвет фона темно-серый */
+            color: white; /* Цвет текста */
+            border: none; /* Убираем рамку */
+            border-radius: 5px; /* Скругленные углы */
+            cursor: pointer; /* Изменяем курсор при наведении */
+            margin-top: auto; /* Отступ сверху */
+            margin-bottom: 10px; /* Отступ снизу */
+            position: fixed; /* Фиксированное положение */
+            bottom: 10px; /* Положение снизу */
+            left: 50%; /* Положение по горизонтали по центру */
+            transform: translateX(-50%); /* Центрирование */
+            display: flex; /* Добавляем блочный контейнер для вложенного <a> */
+            align-items: center; /* Выравниваем элементы по центру */
+            justify-content: center; /* Выравниваем элементы по центру */
+            text-decoration: none; /* Убираем стандартное подчеркивание */
+        }
 
-    /* Стили кнопок с name "p" */
-    button[name="p"] {
-        width: 120px; /* Увеличиваем ширину кнопки */
-        height: 160px; /* Увеличиваем высоту кнопки */
-    }
+        /* Стили кнопок с name "p" */
+        button[name="p"] {
+            width: 120px; /* Увеличиваем ширину кнопки */
+            height: 160px; /* Увеличиваем высоту кнопки */
+        }
 
-    /* Стили для блока результатов поиска */
-    .search-results {
-        margin-top: 20px; /* Отступ сверху */
-        padding: 10px; /* Внутренний отступ */
-        border: 1px solid #ccc; /* Рамка */
-        border-radius: 5px; /* Скругленные углы */
-    }
+        /* Стили для блока результатов поиска */
+        .search-results {
+            margin-top: 20px; /* Отступ сверху */
+            padding: 10px; /* Внутренний отступ */
+            border: 1px solid #ccc; /* Рамка */
+            border-radius: 5px; /* Скругленные углы */
+        }
 
-    .search-results h2 {
-        margin-top: 0; /* Убираем верхний отступ для заголовка */
-    }
+        .search-results h2 {
+            margin-top: 0; /* Убираем верхний отступ для заголовка */
+        }
 
-    /* Добавим стиль для подсветки выбранных элементов */
-    .selected {
-        background-color: rgba(255, 255, 0, 0.5); /* Желтый фон с небольшой прозрачностью */
-    }
-</style>
+        /* Добавим стиль для подсветки выбранных элементов */
+        .selected {
+            background-color: rgba(255, 255, 0, 0.5); /* Желтый фон с небольшой прозрачностью */
+        }
+
+        .alloy-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .alloy-item img {
+            width: 250px;
+            height: 250px;
+            margin-right: 20px;
+        }
+
+        .alloy-info {
+            flex-grow: 1;
+        }
+
+        .alloy-info h3 {
+            margin-top: 0;
+        }
+
+        .alloy-info p {
+            margin-bottom: 0;
+        }
+
+    </style>
 </head>
 <body>
 <div class="buttons-container">
     {% for element in elements %}
-    <button class="button" data-id="{{ element.id }}" data-index="1">
-        <img src="{% static 'images/' %}{{ element.image }}" alt="{{ element.name }}">
-        <span>{{ element.name }}</span>
-        <span>{{ element.percent }}</span>
-    </button>
+        <button class="button" data-id="{{ element.id }}" data-index="1">
+            <img src="{% static 'images/' %}{{ element.image }}" alt="{{ element.name }}">
+            <span>{{ element.name }}</span>
+            <span>{{ element.percent }}</span>
+        </button>
     {% endfor %}
 </div>
 
+{#<img src="{% static 'images/latun.png' %}" alt="Пример">#}
 
 
 <!-- Блок результатов поиска сплавов -->
 <div class="search-results">
-    {% if alloys %}
-        <h2>Результаты поиска:</h2>
-        <ul>
-            {% for alloy in alloys %}
-                <li>{{ alloy.name }} - {{ alloy.description }}</li>
-            {% endfor %}
-        </ul>
-    {% elif selected_elements %}
-        <p>Сплава, состоящего из выбранных элементов, не найдено.</p>
-    {% endif %}
-</div>
 
+</div>
 
 
 <!-- Блок для кнопки "Найти сплав" -->
@@ -131,81 +147,111 @@
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-    // Скрываем кнопку "Найти сплав" при загрузке страницы
-    const findAlloyContainer = document.getElementById("find-alloy-container");
-    findAlloyContainer.style.display = "none";
+    document.addEventListener("DOMContentLoaded", function () {
+        // Скрываем кнопку "Найти сплав" при загрузке страницы
+        const findAlloyContainer = document.getElementById("find-alloy-container");
+        findAlloyContainer.style.display = "none";
 
-    // Получаем все кнопки элементов
-    const buttons = document.querySelectorAll(".button");
+        // Получаем все кнопки элементов
+        const buttons = document.querySelectorAll(".button");
 
-    // Добавляем обработчик событий для каждой кнопки элемента
-    buttons.forEach(button => {
-        button.addEventListener("click", function() {
-            // Переключаем класс "selected" для подсветки выбранного элемента
-            this.classList.toggle("selected");
+        // Добавляем обработчик событий для каждой кнопки элемента
+        buttons.forEach(button => {
+            button.addEventListener("click", function () {
+                // Переключаем класс "selected" для подсветки выбранного элемента
+                this.classList.toggle("selected");
 
-            // Проверяем, есть ли выбранные элементы
+                // Проверяем, есть ли выбранные элементы
+                const selectedElements = document.querySelectorAll(".selected");
+                // Показываем или скрываем кнопку "Найти сплав" в зависимости от выбранных элементов
+                if (selectedElements.length > 0) {
+                    findAlloyContainer.style.display = "block";
+                } else {
+                    findAlloyContainer.style.display = "none";
+                }
+            });
+        });
+
+        // Добавляем обработчик события для кнопки "Найти сплав"
+        const findAlloyButton = document.getElementById("find-alloy-button");
+        findAlloyButton.addEventListener("click", function () {
+            // Получаем идентификаторы выбранных элементов
+            const selectedElementIds = [];
             const selectedElements = document.querySelectorAll(".selected");
-            // Показываем или скрываем кнопку "Найти сплав" в зависимости от выбранных элементов
-            if (selectedElements.length > 0) {
-                findAlloyContainer.style.display = "block";
-            } else {
-                findAlloyContainer.style.display = "none";
-            }
-        });
-    });
+            selectedElements.forEach(element => {
+                selectedElementIds.push(element.getAttribute('data-id'));
+            });
+            console.log(selectedElementIds);
 
-    // Добавляем обработчик события для кнопки "Найти сплав"
-    const findAlloyButton = document.getElementById("find-alloy-button");
-    findAlloyButton.addEventListener("click", function() {
-        // Получаем идентификаторы выбранных элементов
-        const selectedElementIds = [];
-        const selectedElements = document.querySelectorAll(".selected");
-        selectedElements.forEach(element => {
-            selectedElementIds.push(element.getAttribute('data-id'));
-        });
-        console.log(selectedElementIds);
-
-        // Отправляем AJAX-запрос на сервер
-        fetch('', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRFToken': getCookie('csrftoken')  // Получаем CSRF-токен для защиты от CSRF-атак
-            },
-            body: JSON.stringify({ element_ids: selectedElementIds })  // Отправляем выбранные идентификаторы элементов
-        })
-        .then(response => response.json())
-        .then(data => {
+            // Отправляем AJAX-запрос на сервер
+            fetch('', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken')  // Получаем CSRF-токен для защиты от CSRF-атак
+                },
+                body: JSON.stringify({element_ids: selectedElementIds})  // Отправляем выбранные идентификаторы элементов
+            })
+                .then(response => response.json())
+                .then(data => {
             // Обрабатываем ответ от сервера
             console.log(data);
             // Очищаем содержимое блока "search-results"
             const searchResultsContainer = document.querySelector('.search-results');
             searchResultsContainer.innerHTML = '';
 
-            // Перебираем результаты поиска и добавляем их в блок "search-results"
-            data.alloys.forEach(alloy => {
-                const alloyDiv = document.createElement('div');
-                alloyDiv.textContent = alloy.name; // Предположим, что "name" - это поле с названием сплава
-                searchResultsContainer.appendChild(alloyDiv);
-            });
+            // Проверяем, есть ли сплавы в ответе
+            if (data.alloys.length > 0) {
+                const ul = document.createElement('ul');
+                data.alloys.forEach(alloy => {
+                    const li = document.createElement('li');
+                    li.classList.add('alloy-item');
+
+                    // Создаем изображение
+                    const img = document.createElement('img');
+                    img.src = `{% static 'images/' %}${alloy.images}`;
+                    img.alt = alloy.name;
+                    li.appendChild(img);
+
+                    // Создаем контейнер для информации о сплаве
+                    const infoContainer = document.createElement('div');
+                    infoContainer.classList.add('alloy-info');
+
+                    // Добавляем название сплава
+                    const title = document.createElement('h3');
+                    title.textContent = alloy.name;
+                    infoContainer.appendChild(title);
+
+                    // Добавляем описание сплава
+                    const description = document.createElement('p');
+                    description.textContent = alloy.description;
+                    infoContainer.appendChild(description);
+
+                    li.appendChild(infoContainer);
+                    ul.appendChild(li);
+                });
+                searchResultsContainer.appendChild(ul);
+            } else {
+                // Если сплавов нет, добавляем сообщение об отсутствии результатов
+                const p = document.createElement('p');
+                p.textContent = 'Сплава, состоящего из выбранных элементов, не найдено.';
+                searchResultsContainer.appendChild(p);
+            }
         })
-        .catch(error => {
-            console.error('Error:', error);
+
+                .catch(error => {
+                    console.error('Error:', error);
+                });
         });
+
+        // Функция для получения CSRF-токена из куки
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        }
     });
-
-    // Функция для получения CSRF-токена из куки
-    function getCookie(name) {
-        const value = `; ${document.cookie}`;
-        const parts = value.split(`; ${name}=`);
-        if (parts.length === 2) return parts.pop().split(';').shift();
-    }
-});
 </script>
-
-
 
 
 </body>

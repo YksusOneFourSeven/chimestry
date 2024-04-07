@@ -31,7 +31,11 @@ class DisplayElementsView(View):
                 correct_alloys.append(alloy)
 
         # Подготавливаем данные для ответа
-        alloys_data = [{'id': alloy.id, 'name': alloy.name} for alloy in correct_alloys]
+        alloys_data = [{'id': alloy.id,
+                        'name': alloy.name,
+                        'description': alloy.description,
+                        'images': str(alloy.images),
+                        } for alloy in correct_alloys]
 
         return JsonResponse({'alloys': alloys_data})
 
